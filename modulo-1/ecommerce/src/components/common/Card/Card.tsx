@@ -7,13 +7,14 @@ interface CardProps {
 
 export default function Card({character}: CardProps) {
 	return (
-		<div className="max-w-xs rounded overflow-hidden shadow-lg">
+		<div className="max-w-xs overflow-hidden shadow-lg mx-auto mt-8 flex flex-col items-center border p-4 rounded-lg">
 			<Image
-				className="w-full"
+				className="mx-auto aspect-auto object-cover"
 				src={character.image}
 				alt={character.name}
-				width={180}
-				height={250}
+				width={200}
+				height={200}
+				priority
 			/>
 			<div className="px-6 py-4">
 				<div className="font-bold text-xl mb-2">{character.name}</div>
