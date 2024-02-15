@@ -2,10 +2,11 @@ import Image from "next/image";
 import {Raleway} from "next/font/google";
 import {useEffect, useState} from "react";
 import {Character} from "@/interface";
+import Link from "next/link";
 
 const raleway = Raleway({subsets: ["latin"]});
 
-export default function Home() {
+export default function HomePage() {
 	const [character, setCharacter] = useState<Character[]>([]);
 
 	const getCharacter = async () => {
@@ -22,17 +23,22 @@ export default function Home() {
 		<main
 			className={`flex min-h-screen flex-col items-center justify-between p-24 ${raleway.className}`}
     >
-			<h1>Ecomerce</h1>
-			<section className="grid grid-cols-4 gap-7 mt-6 rounded-[10px]">
+			<h1 className="text-2xl font-bold">Ecomerce</h1>
+			<section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-4 md:px-0">
 				{character.map((item) => (
-					<div key={item.tail} className="col-span-1">
+					<div key={item.tail} className="col-span-1 border border-gray-700 p-2 rounded-xl">
             <p>{item.name}</p>
             <Image
               src={item.image}
               alt={item.name}
               width={200}
-              height={200}
-            />
+							height={200}
+							priority
+							className="aspect-square object-contain"
+						/>
+						<Link className="underline text-gray-600" href={`/character/${item.tail}`}>
+							Ver más
+						</Link>
 					</div>
 				))}
 			</section>
