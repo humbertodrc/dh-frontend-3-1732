@@ -13,7 +13,7 @@ export default function Layout({children, title, description, keywoards}: Layout
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title || "Ecomerce DH"}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywoards} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

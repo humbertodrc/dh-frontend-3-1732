@@ -1,4 +1,5 @@
 import Card from "@/components/common/Card";
+import { Layout } from "@/components/layouts";
 import {Character} from "@/interface";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
@@ -27,5 +28,9 @@ export default function CharacterPage() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [query.id]);
 
-	return <>{character.name && <Card character={character} />}</>;
+	return (
+		<Layout title={character.name} description={`Figura de ${character.name}`}>
+			{character.name && <Card character={character} />}
+			</Layout>
+		);
 }
