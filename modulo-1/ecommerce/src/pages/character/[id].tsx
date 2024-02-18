@@ -1,13 +1,31 @@
-import { useRouter } from "next/router"
+import Card from "@/components/common/Card";
+import {Character} from "@/interface";
+import {useRouter} from "next/router";
+import {useEffect, useState} from "react";
 
 export default function CharacterPage() {
+	const [character, setCharacter] = useState({} as Character);
+	const {query} = useRouter();
 
-  const { query } = useRouter()
-  
-  // Hacer un fetch del lado del cliente y buscar character por id
+	const getCharacter = async () => {
+		try {
+			if (query.id) {
+				const res = await fetch(
+					`https://amiiboapi.com/api/amiibo/?tail=${query.id}`
+				);
+				const data = await res.json();
+				const characterapi = data.amiibo[0];
+				setCharacter(characterapi);
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
+	useEffect(() => {
+		getCharacter();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [query.id]);
 
-  return (
-    <div>Esta es la pagina del character con el id: {query.id}</div>
-  )
+	return <>{character.name && <Card character={character} />}</>;
 }
