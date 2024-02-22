@@ -1,6 +1,8 @@
 import Card from "@/components/common/Card";
 import { Layout } from "@/components/layouts";
 import { Character } from "@/interface";
+import { getCharacter } from "@/services/getCharacter";
+import { getCharacters } from "@/services/getCharacters";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 export default function CharacterPage({character}: {character: Character}) {
@@ -12,10 +14,7 @@ export default function CharacterPage({character}: {character: Character}) {
 }
 
 export const getStaticPaths: GetStaticPaths = async ({locales}) => {
-	const response = await fetch("https://amiiboapi.com/api/amiibo/");
-	const data = await response.json();
-	const characters = data.amiibo.slice(0, 20);
-
+	const characters = await getCharacters();
 	const idiomas = locales as string[];
 
 	// Obtener los paths para cada idioma
@@ -33,9 +32,7 @@ export const getStaticPaths: GetStaticPaths = async ({locales}) => {
 export const getStaticProps: GetStaticProps = async ({params}) => {
 	const id = params?.id as string;
 
-	const response = await fetch(`https://amiiboapi.com/api/amiibo/?tail=${id}`);
-	const data = await response.json();
-	const character = data.amiibo[0];
+	const character = await getCharacter(id);
 
 	return {
 		props: {
