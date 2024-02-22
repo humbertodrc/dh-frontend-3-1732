@@ -11,7 +11,7 @@ const SeriesPage: NextPage<SeriesPageProps> = ({series}) => {
 	return (
 		<Layout title="Series" description="Listado de series de amiibo">
 			<main>
-				<h1 className="text-3xl font-bold my-6">Series 🎞️</h1>
+				<h1 className="text-3xl font-bold my-6">Series</h1>
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					{series.map((serie) => (
 						<div key={serie.key} className="bg-slate-950/45 rounded-lg shadow-md p-4">
