@@ -3,5 +3,6 @@ export const homeContentEs = {
     about: "Acerca de",
     contact: "Contacto",
     cart: "Carrito",
+    series: "Series"
   }
 }

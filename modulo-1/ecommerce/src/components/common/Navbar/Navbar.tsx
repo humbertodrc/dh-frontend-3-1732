@@ -37,6 +37,9 @@ export default function Navbar() {
 					<Link href="/cart">{content.cart}</Link>
 				</li>
 				<li>
+					<Link href="/series">{content.series}</Link>
+				</li>
+				<li>
 					<button onClick={changeLanguage}>
 						{router.locale === "es" ? "EN" : "ES"}
 					</button>

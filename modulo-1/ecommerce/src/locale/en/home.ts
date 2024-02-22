@@ -3,5 +3,6 @@ export const homeContentEn = {
     about: "About",
     contact: "Contact",
     cart: "Cart",
+    series: "Series"
   }
 }
