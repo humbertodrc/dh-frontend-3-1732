@@ -1,36 +1,45 @@
 import Card from "@/components/common/Card";
 import { Layout } from "@/components/layouts";
-import {Character} from "@/interface";
-import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import { Character } from "@/interface";
+import { GetStaticPaths, GetStaticProps } from "next";
 
-export default function CharacterPage() {
-	const [character, setCharacter] = useState({} as Character);
-	const {query} = useRouter();
-
-	const getCharacter = async () => {
-		try {
-			if (query.id) {
-				const res = await fetch(
-					`https://amiiboapi.com/api/amiibo/?tail=${query.id}`
-				);
-				const data = await res.json();
-				const characterapi = data.amiibo[0];
-				setCharacter(characterapi);
-			}
-		} catch (error) {
-			console.error(error);
-		}
-	};
-
-	useEffect(() => {
-		getCharacter();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [query.id]);
-
+export default function CharacterPage({character}: {character: Character}) {
 	return (
 		<Layout title={character.name} description={`Figura de ${character.name}`}>
-			{character.name && <Card character={character} />}
-			</Layout>
-		);
+			<Card character={character} />
+		</Layout>
+	);
 }
+
+export const getStaticPaths: GetStaticPaths = async ({locales}) => {
+	const response = await fetch("https://amiiboapi.com/api/amiibo/");
+	const data = await response.json();
+	const characters = data.amiibo.slice(0, 20);
+
+	const idiomas = locales as string[];
+
+	// Obtener los paths para cada idioma
+	const paths = characters.flatMap((character: Character) =>
+		idiomas.map((idioma) => ({params: {id: character.tail}, locale: idioma}))
+	);
+
+	return {
+		paths,
+		// Mostar las diferentes opcion de ISG por ejemplo: blocking, incremental
+		fallback: "blocking",
+	};
+};
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
+	const id = params?.id as string;
+
+	const response = await fetch(`https://amiiboapi.com/api/amiibo/?tail=${id}`);
+	const data = await response.json();
+	const character = data.amiibo[0];
+
+	return {
+		props: {
+			character,
+		},
+	};
+};
