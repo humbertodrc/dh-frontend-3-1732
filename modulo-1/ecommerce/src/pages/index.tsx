@@ -1,13 +1,18 @@
 import { Layout } from "@/components/layouts";
 import { Character } from "@/interface";
-import { GetStaticProps } from 'next';
+import { getCharacters } from "@/services/getCharacters";
+import { GetStaticProps, NextPage } from 'next';
 import { Raleway } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
-const raleway = Raleway({subsets: ["latin"]});
+const raleway = Raleway({ subsets: ["latin"] });
 
-export default function HomePage({ characters }: { characters: Character[] }) {
+interface Props {
+	characters: Character[];
+}
+
+const HomePage: NextPage<Props> = ({ characters }) => {
 
 	return (
 		<Layout title="Ecommerce DH" description="Consigue todas las Figuras coleccionables que necesitas">
@@ -46,9 +51,7 @@ export default function HomePage({ characters }: { characters: Character[] }) {
 
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-	const response = await fetch("https://amiiboapi.com/api/amiibo/");
-	const data = await response.json();
-	const characters = data.amiibo.slice(0, 20);
+	const characters = await getCharacters();
 
 	return {
 		props: {
@@ -56,3 +59,5 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 		}
 	}
 }
+
+export default HomePage;

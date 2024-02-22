@@ -25,6 +25,7 @@ export const getStaticPaths: GetStaticPaths = async ({locales}) => {
 
 	return {
 		paths,
+		// Mostar las diferentes opcion de ISG por ejemplo: blocking, incremental
 		fallback: "blocking",
 	};
 };
