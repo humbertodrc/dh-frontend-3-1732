@@ -1,14 +1,35 @@
 import {LayoutLogin} from "@/components/layouts";
+import { useRouter } from "next/router";
 
 const LoginPage = () => {
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const router = useRouter();
+
+	const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
 
-		console.log(email, password);
+		const user = {
+			email,
+			password
+		}
+
+		const response = await fetch('http://localhost:3000/api/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(user)
+		});
+		
+		if(response.ok){
+			router.push('/dashboard');
+		}
+		else{
+			alert('Usuario no valido');
+		}
 	}
 
 	return (
