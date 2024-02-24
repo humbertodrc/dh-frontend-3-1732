@@ -1,11 +1,21 @@
 import {LayoutLogin} from "@/components/layouts";
 
 const LoginPage = () => {
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const formData = new FormData(e.currentTarget);
+		const email = formData.get('email') as string;
+		const password = formData.get('password') as string;
+
+		console.log(email, password);
+	}
+
 	return (
 		<LayoutLogin title="Login" description="Login to your account">
 			<section className="bg-gray-800 p-6 rounded-lg shadow-lg w-96">
 				<h1 className="text-3xl font-bold text-white mb-6">Login</h1>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div className="mb-4">
 						<label className="block text-white mb-2" htmlFor="email">
 							Email
