@@ -1,0 +1,72 @@
+.header {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+.header div figure {
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-right: 0.5rem;
+}
+
+.navbar {
+  color: var(--white);
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: flex-start;
+  width: 70%;
+}
+
+.navbar a {
+  margin: 0 0.5rem;
+}
+
+.appName {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.appName p {
+  margin: 0;
+  text-align: left;
+  width: 100px;
+  font-weight: bold;
+}
+
+.localeSwitch {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5rem;
+  gap: 30px;
+  color: var(--white);
+}
+
+.localeSwitch p {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.active {
+  color: var(--primary-text);
+}

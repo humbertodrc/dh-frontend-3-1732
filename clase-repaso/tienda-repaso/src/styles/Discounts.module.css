@@ -1,0 +1,24 @@
+.discountsContainer {
+  padding: 1rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.discount {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.discountsContainer h2 {
+  font-size: 3rem;
+}
+
+.discountsContainer h3 {
+  font-size: 2rem;
+}
