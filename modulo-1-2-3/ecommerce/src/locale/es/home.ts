@@ -3,6 +3,8 @@ export const homeContentEs = {
     about: "Acerca de",
     contact: "Contacto",
     cart: "Carrito",
-    series: "Series"
+    series: "Series",
+    faqs: "Preguntas frecuentes",
+    login: "Iniciar sesión",
   }
 }

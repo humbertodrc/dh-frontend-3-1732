@@ -40,6 +40,12 @@ export default function Navbar() {
 					<Link href="/series">{content.series}</Link>
 				</li>
 				<li>
+					<Link href="/faqs">{content.faqs}</Link>
+				</li>
+				<li>
+					<Link href="/login">{content.login}</Link>
+				</li>
+				<li>
 					<button onClick={changeLanguage}>
 						{router.locale === "es" ? "EN" : "ES"}
 					</button>
