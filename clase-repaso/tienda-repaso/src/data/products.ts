@@ -1,6 +1,6 @@
-const ES_ES = "es-ES";
-const EN_US = "en-US";
-const PT_BR = "pt-BR";
+import { locales } from "@/locale/constants";
+
+const { EN_US, ES_ES, PT_BR } = locales
 
 export const products = {
 	[ES_ES]: [

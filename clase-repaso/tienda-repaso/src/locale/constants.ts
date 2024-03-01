@@ -4,6 +4,19 @@ const PT_BR = "pt-BR";
 
 
 // Crear las constantes para los idiomas y un objeto para importar las keys y un default locale
+export const DEFAULT_LOCALE = ES_ES;
+
+export const locales = {
+  EN_US,
+  ES_ES,
+  PT_BR,
+}
+
+export const localesNames = {
+  [EN_US]: "English",
+  [ES_ES]: "Español",
+  [PT_BR]: "Português",
+}
 
 export const TEXTS_BY_LANGUAGE = {
   [EN_US]: {
