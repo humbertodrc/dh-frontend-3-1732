@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Box from "@mui/material/Box";
-import {Button, FormControl, FormControlLabel, FormLabel, Grid, Paper, Radio, RadioGroup, TextField, Typography} from "@mui/material";
+import Form from "@/components/Form";
 
 export default function Home() {
 	return (
@@ -13,72 +13,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={`${styles.main}`}>
-				<Box component="section" sx={{maxWidth: 500}}>
-					<Paper
-						elevation={2}
-						sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3}}
-					>
-						<Typography
-							component="h1"
-							variant="h1"
-							sx={{fontWeight: 500, fontSize: 24}}
-						>
-							Registrate para recibir las últimas noticias
-						</Typography>
-
-						<Grid item xs={12}>
-							<TextField
-								id="outlined-basic"
-								label="Nombre"
-								variant="outlined"
-								sx={{width: 1}}
-							/>
-						</Grid>
-
-						<Grid item xs={12}>
-							<TextField
-								id="outlined-basic"
-								label="Correo"
-								type="email"
-								variant="outlined"
-								sx={{width: 1}}
-							/>
-						</Grid>
-
-						<Grid item xs={12}>
-							<FormControl>
-								<FormLabel id="demo-radio-buttons-group-label">
-									Gender
-								</FormLabel>
-								<RadioGroup
-									aria-labelledby="demo-radio-buttons-group-label"
-									defaultValue="female"
-									name="radio-buttons-group"
-								>
-									<FormControlLabel
-										value="female"
-										control={<Radio />}
-										label="Female"
-									/>
-									<FormControlLabel
-										value="male"
-										control={<Radio />}
-										label="Male"
-									/>
-									<FormControlLabel
-										value="other"
-										control={<Radio />}
-										label="Other"
-									/>
-								</RadioGroup>
-							</FormControl>
-            </Grid>
-            
-            <Button variant="contained" color="primary">
-              Enviar
-            </Button>
-					</Paper>
-				</Box>
+				<Form />
 			</main>
 		</>
 	);
