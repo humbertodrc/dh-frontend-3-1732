@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import Box from "@mui/material/Box";
 import Form from "@/components/Form";
 import Table from "@/components/Table";
+import RegisterReactHookForm from "@/components/RegisterReactHookForm";
 
 export default function Home() {
 	return (
@@ -16,6 +17,7 @@ export default function Home() {
 			<main className={`${styles.main}`}>
 				<Form />
 				<Table />
+				<RegisterReactHookForm />
 			</main>
 		</>
 	);
