@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Form from "@/components/Form";
 import Table from "@/components/Table";
 import RegisterReactHookForm from "@/components/RegisterReactHookForm";
+import FormMui from "@/components/mui/FormMui";
 
 export default function Home() {
 	return (
@@ -15,9 +16,10 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={`${styles.main}`}>
-				<Form />
-				<Table />
-				<RegisterReactHookForm />
+				{/* <Form /> */}
+				{/* <Table /> */}
+				{/* <RegisterReactHookForm /> */}
+				<FormMui />
 			</main>
 		</>
 	);
