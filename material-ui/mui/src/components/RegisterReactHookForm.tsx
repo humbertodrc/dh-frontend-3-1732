@@ -36,7 +36,14 @@ const RegisterReactHookForm = () => {
     // register,
     // getValues,
     watch
-	} = useForm<DataForm>();
+  } = useForm<DataForm>({
+    defaultValues: {
+      name: "",
+      lastName: "",
+      email: "",
+      gender: "",
+    }
+  });
 
   // Para manejo de errores se utiliza formState y destructuramos el objeto errors
   
