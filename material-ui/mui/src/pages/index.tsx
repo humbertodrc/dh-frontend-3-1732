@@ -1,12 +1,31 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Box from "@mui/material/Box";
-import Form from "@/components/Form";
+// import Form from "@/components/Form";
 import Table from "@/components/Table";
 import RegisterReactHookForm from "@/components/RegisterReactHookForm";
 import FormMui from "@/components/mui/FormMui";
+import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "@/rules";
+import * as yup from "yup";
+import Form from "@/components/formContext/Form";
 
 export default function Home() {
+
+	type DataForm = yup.InferType<typeof schema>;
+
+	const method = useForm<DataForm>({
+		resolver: yupResolver(schema),
+		mode: "onChange",
+		defaultValues: {
+			name: "",
+			lastName: "",
+			email: "",
+			gender: "",
+		}
+	})	
+
 	return (
 		<>
 			<Head>
@@ -19,7 +38,10 @@ export default function Home() {
 				{/* <Form /> */}
 				{/* <Table /> */}
 				{/* <RegisterReactHookForm /> */}
-				<FormMui />
+				{/* <FormMui /> */}
+				<FormProvider {...method}>
+						<Form />
+				</FormProvider>
 			</main>
 		</>
 	);
