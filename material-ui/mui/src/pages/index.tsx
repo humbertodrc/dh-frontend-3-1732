@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "@/rules";
 import * as yup from "yup";
 import Form from "@/components/formContext/Form";
+import FormUseFieldArray from "@/components/formUseFieldArray/Form";
 
 export default function Home() {
 
@@ -39,9 +40,10 @@ export default function Home() {
 				{/* <Table /> */}
 				{/* <RegisterReactHookForm /> */}
 				{/* <FormMui /> */}
-				<FormProvider {...method}>
+				{/* <FormProvider {...method}>
 						<Form />
-				</FormProvider>
+				</FormProvider> */}
+				<FormUseFieldArray />
 			</main>
 		</>
 	);
